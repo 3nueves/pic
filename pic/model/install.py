@@ -97,6 +97,7 @@ class Install():
             self.create_kit()
             self.installed()
 
+
     def __create_file(self, route_file, config):
         """ Add config into the files """
 
@@ -145,8 +146,8 @@ class Install():
         if not path.exists(self.home.joinpath(f'pic/kits/{kit_name}/{kit_name}.sh')):
             self.__create_file(self.home.joinpath(f'pic/kits/{kit_name}/{kit_name}.sh'), kit)
 
+
     def installed(self):
         """ Only create sign """
         if not path.exists(self.home.joinpath('pic/.installed')):
             self.__create_file(self.home.joinpath('pic/.installed'), 'installed')
-            
