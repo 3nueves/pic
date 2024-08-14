@@ -149,7 +149,4 @@ class Install():
         """ Only create sign """
         if not path.exists(self.home.joinpath('pic/.installed')):
             self.__create_file(self.home.joinpath('pic/.installed'), 'installed')
-
-
-if __name__ == '__main__':
-    Install()
+            
