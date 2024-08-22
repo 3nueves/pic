@@ -130,8 +130,9 @@ class Install():
                 # Cojemos la primera palabra de las key que tenemos en el diccionario path_configs
                 folder = path.basename(route_folder)
 
-                # recorremos configs y preguntamos si la primera palabra de de la key del diccionario path_configs coincide con la key del diccionario configs
-                # si es afirmativo guardamos el valor del diccionario configs en "config_file"
+                # recorremos configs y preguntamos si la primera palabra de de la key del diccionario path_configs 
+                # coincide con la key del diccionario configs si es afirmativo guardamos el valor 
+                # del diccionario configs en "config_file"
                 config_file = [config[1] for config in self.configs.items() if config[0] == folder]
 
                 # convertimos a yaml el diccionario
