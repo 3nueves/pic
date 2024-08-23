@@ -18,11 +18,5 @@ class TestInstall:
         install = Install()
         home = pathlib.Path.home()
         route = home.joinpath('pic')
-        install.create_folders_and_files()
         shutil.rmtree(route)
         assert str(route) == FOLDER_PIC
-
-        # self.install.create_kit()
-        # self.install.installed()
-        
-        
