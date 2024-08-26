@@ -34,11 +34,11 @@ class TestInstall:
         install = Install()
         home = pathlib.Path.home()
 
-        # Check if exiest Folders
+        # Check if exist Folders
         for folder in FOLDERS.values():
             assert path.exists(home.joinpath(folder))
 
-       # Check if exiest Files
+       # Check if exist Files
         for file in FILES.values():
             assert path.exists(home.joinpath(file))
 
