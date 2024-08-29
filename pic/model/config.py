@@ -11,4 +11,4 @@ class Config():
 
     def load_config(self):
         """ load """
-        pass
+        print("hola mundo")
