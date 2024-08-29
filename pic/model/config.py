@@ -7,3 +7,7 @@ class Config():
 
     def __init__(self) -> None:
         self.install = Install()
+
+    def load_config(self):
+        """ load """
+        pass
