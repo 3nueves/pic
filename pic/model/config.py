@@ -9,8 +9,14 @@ class Config():
     """ class config """
 
     PATH_CONFIG_FILE_PIC = 'pic/config.yaml'
-    NAME_CONFIG_FILE_KITS = 'pic.yaml'
 
+    path = {
+        'path_kits': 'pic.yaml',
+        'path_servers': 'servers.yaml',
+        'path_secrets':'secrets.yaml'
+    }
+
+    keep_config = {}
 
     def __init__(self) -> None:
         self.yml = yaml
@@ -25,26 +31,18 @@ class Config():
         return self.__read_yaml(self.pic_config)
 
 
-    def load_config_kits(self):
-        """ load kits config """
+    def load_configs(self):
+        """ load config """
+        for key, path in self.path.items():
+            try:
+                path_config = self.config['contexts'][self.config['context']][key]
+                self.keep_config[key] = (self.__read_yaml(path_config + '/' + path))
 
-        try:
-            path_kits = self.config['contexts'][self.config['context']]['path_kits']
-            return self.__read_yaml(path_kits + '/' + self.NAME_CONFIG_FILE_KITS)
-
-        except (ValueError, KeyError) as error:
-            print(f'\n keyError: {error} has a mistake\n')
-            exit()
-
-
-    def load_config_servers(self):
-        """ load servers config  """
-        pass
-
-
-    def load_config_secrets(self):
-        """ load secrets config  """
-        pass
+            except (ValueError, KeyError) as error:
+                print(f'\n keyError: {error} has a mistake\n')
+                exit()
+        
+        return self.keep_config
 
 
     def __read_yaml(self, route_file):

@@ -2,7 +2,7 @@ from pic.model.config import Config
 
 config = Config()
 
-p = config.load_config_kits()
+p = config.load_configs()
 
 # context = p['context']
 
@@ -11,7 +11,9 @@ p = config.load_config_kits()
 # print(contexts['path_kits'])
 
 
-print(p)
+for a in p['path_servers'].items():
+    for b in a:
+        print(b)
 
 # for pic in p.items():
 #     print(pic['contexts'])
