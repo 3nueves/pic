@@ -31,20 +31,6 @@ class Config():
         return self.__read_yaml(self.pic_config)
 
 
-    def load_configs(self):
-        """ load config """
-        for key, path in self.path.items():
-            try:
-                path_config = self.config['contexts'][self.config['context']][key]
-                self.keep_config[key] = (self.__read_yaml(path_config + '/' + path))
-
-            except (ValueError, KeyError) as error:
-                print(f'\n keyError: {error} has a mistake\n')
-                exit()
-        
-        return self.keep_config
-
-
     def __read_yaml(self, route_file):
         """ Read config file about pic"""
 
@@ -58,3 +44,17 @@ class Config():
 
         except FileNotFoundError as error:
             print(error)
+
+
+    def load_configs(self):
+        """ load config """
+        for key, path in self.path.items():
+            try:
+                path_config = self.config['contexts'][self.config['context']][key]
+                self.keep_config[key] = (self.__read_yaml(path_config + '/' + path))
+
+            except (ValueError, KeyError) as error:
+                print(f'\n keyError: {error} has a mistake\n')
+                exit()
+        
+        return self.keep_config
