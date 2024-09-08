@@ -1,3 +1,4 @@
+""" Module to install app """
 import pathlib
 import yaml
 from os import path

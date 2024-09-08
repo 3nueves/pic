@@ -1,5 +1,4 @@
 """ Testing """
-import pytest
 import pathlib
 import shutil
 
@@ -31,14 +30,15 @@ class TestInstall:
 
     def test_check_class_install(self):
         """ Test to check if ok """
-        install = Install()
+
+        _ = Install()
         home = pathlib.Path.home()
 
         # Check if exist Folders
         for folder in FOLDERS.values():
             assert path.exists(home.joinpath(folder))
 
-       # Check if exist Files
+        # Check if exist Files
         for file in FILES.values():
             assert path.exists(home.joinpath(file))
 

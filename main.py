@@ -1,14 +1,17 @@
 from pic.model.config import Config
-
 from pic.manage.context import Context
+from pic.manage.servers import Servers
+from pic.manage.git import Git
 
 config = Config()
-context = Context()
+# context = Context()
+# server = Servers()
+# server = Git()
 
 p = config.load_configs()
 d = config.load_config_pic()
 
-context.change_context("gi")
+# context.change_context("git")
 
 
 # context = p['context']
@@ -23,11 +26,9 @@ context.change_context("gi")
 
 # print()
 
-# for a in p.items():
-#     print(a)
-    # for b in a:
-    #     print(b)
+for a in p['kits']['kits']:
+    print(a)
 
-# for pic in p.items():
-#     print(pic['contexts'])
+for pic in p['servers']['servers']:
+    print(pic['hosts'])
 
