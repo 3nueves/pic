@@ -5,22 +5,30 @@ from os import path
 
 # These files are used to install pic
 
+home = pathlib.Path.home()
+
 pic = {
     'contexts': {
         'local': {
-            'path_kits':'$HOME/pic/kits', 
-            'path_servers':'$HOME/pic/servers', 
-            'path_secrets': '$HOME/pic/secrets',
+            'kits':f'{home}/pic/kits', 
+            'servers':f'{home}/pic/servers', 
+            'secrets':f'{home}/pic/secrets',
             'mode': 'local'
         },
         'remote': {
-            'path_kits':'$HOME/pic/kits', 
-            'path_servers':'$HOME/pic/servers', 
-            'path_secrets': '$HOME/pic/secrets',
+            'kits':f'{home}/pic/kits', 
+            'servers':f'{home}/pic/servers', 
+            'secrets':f'{home}/pic/secrets',
+            'mode': 'remote'
+        },
+        'git': {
+            'kits':'https://github.com/3nueves/kits.git', 
+            'servers':f'{home}/pic/servers', 
+            'secrets':f'{home}/pic/secrets',
             'mode': 'remote'
         }
     },
-    'context' : 'local',
+    'context': 'local',
 }
 
 servers = {
@@ -90,7 +98,7 @@ class Install():
                 'cmd': cmd
             }
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.home = pathlib.Path.home()
         if not path.exists(self.home.joinpath('pic/.installed')):
             self.create_folders_and_files()
@@ -98,7 +106,7 @@ class Install():
             self.installed()
 
 
-    def __create_file(self, route_file, config):
+    def __create_file(self, route_file, config) -> None:
         """ Add config into the files """
 
         try:
@@ -112,7 +120,7 @@ class Install():
             print(error)
 
 
-    def create_folders_and_files(self):
+    def create_folders_and_files(self) -> None:
         """Create Folder if not exist"""
 
         for paths, file in path_configs.items():
@@ -142,13 +150,13 @@ class Install():
                 self.__create_file(route_file, config)
 
 
-    def create_kit(self):
+    def create_kit(self) -> None:
         """ Only create kit """
         if not path.exists(self.home.joinpath(f'pic/kits/{kit_name}/{kit_name}.sh')):
             self.__create_file(self.home.joinpath(f'pic/kits/{kit_name}/{kit_name}.sh'), kit)
 
 
-    def installed(self):
+    def installed(self) -> None:
         """ Only create sign """
         if not path.exists(self.home.joinpath('pic/.installed')):
             self.__create_file(self.home.joinpath('pic/.installed'), 'installed')
