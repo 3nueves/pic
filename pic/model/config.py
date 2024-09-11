@@ -24,11 +24,11 @@ class Config():
     def __init__(self) -> None:
         self.yml = yaml
         self.install = Install()
-        self.git = Git()
         self.path_home = Path.home()
         self.pic_config = self.path_home.joinpath(self.CONFIG_FILE_PIC)
         self.config = self.load_config_pic()
         self.path_git_repo = self.path_home.joinpath(self.PATH_REPO + self.config['context'])
+        self.git = Git(self.path_git_repo)
 
     def load_config_pic(self) -> str:
         """ load pic config """
@@ -58,9 +58,10 @@ class Config():
                 # chech if kits they are in git repo
                 if key == 'kits' and 'git' in path_config:
                     if not Path.exists(self.path_git_repo):
-                        self.git.clone_repo(path_config, self.path_git_repo)
+                        self.read_git_config("clone")
                         self.keep_config[key] = (self.read_config(str(self.path_git_repo) + '/' + path))
                     else:
+                        self.read_git_config("pull")
                         self.keep_config[key] = (self.read_config(str(self.path_git_repo) + '/' + path))
                 else:
                     self.keep_config[key] = (self.read_config(path_config + '/' + path))
@@ -70,3 +71,10 @@ class Config():
                 exit()
         
         return self.keep_config
+
+    def read_git_config(self, options: str, path_config=None) -> None:
+        """ load config from repository git """
+        if options == "clone":
+            self.git.clone_repo(path_config, self.path_git_repo)
+        else:
+            self.git.pull_repo()
