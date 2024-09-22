@@ -4,7 +4,7 @@ import yaml
 from os import path
 
 
-# These files are used to install pic
+# These files are used to install pic.
 
 home = pathlib.Path.home()
 
