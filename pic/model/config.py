@@ -6,7 +6,7 @@ from pathlib import Path
 from .install import Install
 from ..manage.git import Git
     
-class Config():
+class Config:
     """ class config """
 
     CONFIG_FILE_PIC = 'pic/config.yaml'

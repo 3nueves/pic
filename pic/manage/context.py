@@ -3,7 +3,7 @@ import yaml
 
 from ..model.config import Config
 
-class Context():
+class Context:
     """ Manage Contexts """
     
     def __init__(self):

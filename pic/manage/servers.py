@@ -2,7 +2,7 @@
 
 from ..model.config import Config
 
-class Servers():
+class Servers:
     """ class Manage Servers """
 
     def __init__(self) -> None:

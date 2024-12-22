@@ -2,7 +2,7 @@
 
 from git import Repo
 
-class Git():
+class Git:
     """ class Manage Git """
 
     def __init__(self, local_dir=None) -> None:

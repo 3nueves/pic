@@ -86,7 +86,7 @@ path_configs = {
     'pic/secrets': 'pic/secrets/secrets.yaml'
 }
 
-class Install():
+class Install:
     """
     Creating Folder and Config File 
     """
