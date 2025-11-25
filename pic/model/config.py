@@ -1,11 +1,12 @@
 """ Module to load configurations """
-import yaml
 
 from pathlib import Path
 
-from .install import Install
-from ..manage.git import Git
-    
+import yaml
+
+from pic.manage.git import Git
+from pic.model.install import Install
+
 class Config:
     """ class config """
 

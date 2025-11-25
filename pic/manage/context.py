@@ -1,7 +1,7 @@
 """ Module to change context """
 import yaml
 
-from ..model.config import Config
+from pic.model.config import Config
 
 class Context:
     """ Manage Contexts """

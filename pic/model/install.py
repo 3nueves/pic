@@ -1,7 +1,7 @@
 """ Module to install app """
 import pathlib
-import yaml
 from os import path
+import yaml
 
 
 # These files are used to install pic.
@@ -130,17 +130,17 @@ class Install:
             route_file = self.home.joinpath(file)
 
             if not path.exists(route_folder) or not path.exists(route_file):
-                
+
                 print(f'route: {route_folder} file: {route_file}')
 
                 # Creamos el directorio en la home
                 pathlib.Path.mkdir(route_folder)
-                
+
                 # Cojemos la primera palabra de las key que tenemos en el diccionario path_configs
                 folder = path.basename(route_folder)
 
-                # recorremos configs y preguntamos si la primera palabra de de la key del diccionario path_configs 
-                # coincide con la key del diccionario configs si es afirmativo guardamos el valor 
+                # recorremos configs y preguntamos si la primera palabra de de la key del diccionario path_configs
+                # coincide con la key del diccionario configs si es afirmativo guardamos el valor
                 # del diccionario configs en "config_file"
                 config_file = [config[1] for config in self.configs.items() if config[0] == folder]
 
